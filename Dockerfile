@@ -11,7 +11,8 @@ ADD . ./
 
 RUN go test -v ./provider
 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -a -tags netgo \
+RUN echo "Building ${TARGETARCH}" \
+    && CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -a -tags netgo \
     -ldflags="-X github.com/tolson-vkn/pifrost/version.GitCommit=${gitcommit} -X github.com/tolson-vkn/pifrost/version.Version=${version}"
 
 
