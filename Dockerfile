@@ -9,7 +9,7 @@ ARG TARGETARCH
 WORKDIR /opt/build
 ADD . ./
 
-RUN go test -v ./provider
+# RUN go test -v ./provider
 
 RUN echo "Building ${TARGETARCH}" \
     && CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -a -tags netgo \
